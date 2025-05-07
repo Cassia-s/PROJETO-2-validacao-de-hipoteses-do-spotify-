@@ -17,7 +17,7 @@ Analisar dados do Spotify para validar hipóteses levantadas por uma gravadora s
 - Google BigQuery
 - SQL
 - Power BI
-- Python
+- (Python)
 
 ## Hipóteses Testadas
 
