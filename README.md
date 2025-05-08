@@ -7,29 +7,44 @@ Jornada na análise de dados do Spotify
 
 “O que faz uma música ter sucesso?’”
 
-## Objetivo
-
+  <details>
+  <summary><strong style="font-size: 16px;">Objetivo</strong></summary>
+      
 Analisar dados do Spotify para validar hipóteses levantadas por uma gravadora sobre os fatores que influenciam o sucesso de uma música, com base no número de streams, e fornecer insights estratégicos para decisões de lançamento.
 
-## Equipe
-
+  </details>
+  
+  <details>
+  <summary><strong style="font-size: 16px;">Equipe</strong></summary>
+      
 - Cassia Silva
 - Vanessa Santana
 
-## Ferramentas e Tecnologias
-
+  </details>
+  
+  <details>
+  <summary><strong style="font-size: 16px;">Ferramentas e Tecnologias</strong></summary>
+  
 - Google BigQuery
 - SQL
 - Power BI
 - Python
 
-## Hipóteses Testadas
-
+  </details>
+  
+  <details>
+  <summary><strong style="font-size: 16px;">Hipóteses Testadas</strong></summary>
+  
 1. Músicas com BPM mais alto geram mais streams.
 2. Músicas populares no Spotify tendem a se comportar de forma semelhante em outras plataformas.
 3. A presença em mais playlists está relacionada a um maior número de streams.
 4. Artistas com mais músicas disponíveis tendem a ter mais streams.
 5. As características técnicas da música influenciam diretamente o número de streams.
+
+  </details>
+  
+  <details>
+  <summary><strong style="font-size: 16px;">Processamento dos Dados</strong></summary>
 
 ## 📥 Processamento dos Dados
 
@@ -77,7 +92,10 @@ Views auxiliares foram criadas para organizar o processo de ETL e consolidar a b
 - `base_unificada` (final consolidada com `LEFT JOIN`)
 - `total_artista` (view auxiliar para contabilizar músicas por artista)
 
-## 🔍 Análise Exploratória
+  </details>
+  
+  <details>
+  <summary><strong style="font-size: 16px;">Análise Exploratória</strong></summary>
 
 A análise exploratória foi realizada utilizando **Python** para algumas visualizações (como histogramas) e **SQL** para agregações, com a visualização final dos gráficos em **Power BI**.
 
@@ -106,8 +124,11 @@ As variáveis numéricas foram categorizadas em quartis e classificações utili
 
 Essas variáveis de classificação foram criadas com `CASE WHEN` + `PERCENTILE_CONT`, possibilitando uma análise categórica mais visual e comparativa no Power BI.
 
-## 📊 Validação das Hipóteses e Resultados
-
+  </details>
+  
+  <details>
+  <summary><strong style="font-size: 16px;">Validação das Hipóteses e Resultados</strong></summary>
+      
 A validação das hipóteses envolveu o cálculo de correlações (realizado via **SQL** ou **Python**) e a análise visual dos dados em **Power BI**.
 
 ### 📌 Hipótese 1: Músicas com BPM mais altas fazem mais sucesso
@@ -139,17 +160,25 @@ A validação das hipóteses envolveu o cálculo de correlações (realizado via
     - Energy: `-0.0256`
 - **Interpretação:** Embora as correlações individuais sejam fracas e negativas, a análise visual dos quartis e gráficos de dispersão no **Power BI** sugere uma tendência: músicas com maior danceability, positividade (valence) e energia tendem a ter um desempenho marginalmente melhor em streams. No entanto, essa relação não se confirma como uma correlação estatisticamente forte ou direta. Isso indica que essas características influenciam o sucesso musical de forma limitada, integrando um conjunto mais amplo de fatores, como marketing, inclusão em playlists e presença multiplataforma. A hipótese foi parcialmente confirmada, demonstrando que características técnicas contribuem para o sucesso, mas são secundárias em relação a fatores de visibilidade.
 
-## 💡 Conclusão Geral
+  </details>
+  
+  <details>
+  <summary><strong style="font-size: 16px;">Conclusão Geral</strong></summary>
 
 Dos cinco principais pontos analisados, três hipóteses foram confirmadas. A inclusão em playlists e a popularidade em outras plataformas mostraram-se fortemente correlacionadas com o desempenho de streams das músicas. As variáveis técnicas exibiram uma influência moderada nesse desempenho, sugerindo um papel secundário. Em contrapartida, não foi observada uma relação direta entre o BPM ou o número de músicas por artista e o sucesso em streams.
 
-## 🎯 Recomendações
+  </details>
+  
+  <details>
+  <summary><strong style="font-size: 16px;">Recomendações</strong></summary>
 
 - Investir em estratégias para inclusão em playlists populares no Spotify, Apple Music e Deezer.
 - Avaliar campanhas de marketing alinhadas a faixas com características técnicas já validadas como potencialmente mais populares (alta danceability, valence e energy).
 - Explorar combinações de características técnicas com estratégias de visibilidade para maximizar o sucesso de lançamentos futuros.
 
-## Arquivos e Documentos
+  </details>
+  
+  <details>
+  <summary><strong style="font-size: 16px;">Links</strong></summary>
 
-- **Dataset:** Disponível no Google BigQuery.
-- **Power BI:** Arquivo com dashboards interativos que mostram as análises, filtros por classificações e correlações 
+- https://docs.google.com/presentation/d/1vzNds0b3ifMHkiMoM5ybMV7n6Hb_tPqs/edit?usp=sharing&ouid=117411998894801958154&rtpof=true&sd=true
