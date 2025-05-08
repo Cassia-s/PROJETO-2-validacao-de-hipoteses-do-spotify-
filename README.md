@@ -1,9 +1,13 @@
 # validacao-de-hipoteses-do-spotify-
 Jornada na análise de dados do Spotify
 
-# Título do Projeto: “O que faz uma música ter sucesso?’”
+# Ficha Técnica: Projeto de Análise de Dados do Spotify
 
-## Objetivo do Projeto
+## Título do Projeto
+
+“O que faz uma música ter sucesso?’”
+
+## Objetivo
 
 Analisar dados do Spotify para validar hipóteses levantadas por uma gravadora sobre os fatores que influenciam o sucesso de uma música, com base no número de streams, e fornecer insights estratégicos para decisões de lançamento.
 
@@ -17,7 +21,7 @@ Analisar dados do Spotify para validar hipóteses levantadas por uma gravadora s
 - Google BigQuery
 - SQL
 - Power BI
-- (Python)
+- Python
 
 ## Hipóteses Testadas
 
@@ -27,7 +31,7 @@ Analisar dados do Spotify para validar hipóteses levantadas por uma gravadora s
 4. Artistas com mais músicas disponíveis tendem a ter mais streams.
 5. As características técnicas da música influenciam diretamente o número de streams.
 
-## Processamento dos Dados
+## 📥 Processamento dos Dados
 
 Descrição das etapas realizadas para preparar os dados para análise.
 
@@ -46,9 +50,12 @@ Utilizamos o ambiente **Google BigQuery** para carregar as tabelas de dados.
 
 As etapas de tratamento foram realizadas utilizando **SQL** dentro do ambiente Google BigQuery.
 
-- **Dados Nulos:** Substituição de valores nulos (`IS NULL`, `COUNT`). Exemplo: `in_shazam_charts` com nulos substituídos por 0. Foram encontrados 95 nulos em `technical_info` e 50 em `track_spotify`.
-- **Dados Duplicados:** Identificados com `GROUP BY` + `HAVING COUNT(*) > 1` e tratados com a média dos registros duplicados. Foram encontrados 4 duplicados na tabela `competition`.
-- **Exclusão de Variáveis Fora do Escopo:** Variáveis como `key` e `mode` foram removidas.
+- **Dados Nulos:** Substituição de valores nulos (`IS NULL`, `COUNT`). Exemplo: `in_shazam_charts` com nulos substituídos por 0.
+  - `technical_info` foi encontrado 95 resultados nulos.
+  - `track_spotify` foi encontrado 50 resultados nulos.
+- **Dados Duplicados:** Foram identificados com `GROUP BY` + `HAVING COUNT(*) > 1` e tratados com média dos registros duplicados.
+  - Na tabela `competition`, foram encontrados 4 resultados duplicados.
+- **Exclusão de Variáveis Fora do Escopo:** Como `key` e `mode`.
 - **Padronização de Valores Textuais:** Uso de funções SQL como `REGEXP_REPLACE`, `UPPER` e `LOWER`.
 - **Correção de Erros:** Um `track_id` com valor inválido de `streams` foi corrigido com base na média da variável.
 - **Conversão de Tipos:** Uso da função SQL `SAFE_CAST` para transformar variáveis como `streams` de string para inteiro.
@@ -70,9 +77,11 @@ Views auxiliares foram criadas para organizar o processo de ETL e consolidar a b
 - `base_unificada` (final consolidada com `LEFT JOIN`)
 - `total_artista` (view auxiliar para contabilizar músicas por artista)
 
-## Análise Exploratória
+## 🔍 Análise Exploratória
 
 A análise exploratória foi realizada utilizando **Python** para algumas visualizações (como histogramas) e **SQL** para agregações, com a visualização final dos gráficos em **Power BI**.
+
+### Análises Realizadas
 
 - Distribuição de `streams` por artista e por ano.
 - Médias e medianas de `streams` e presença em playlists.
@@ -97,50 +106,50 @@ As variáveis numéricas foram categorizadas em quartis e classificações utili
 
 Essas variáveis de classificação foram criadas com `CASE WHEN` + `PERCENTILE_CONT`, possibilitando uma análise categórica mais visual e comparativa no Power BI.
 
-## Validação das Hipóteses e Resultados
+## 📊 Validação das Hipóteses e Resultados
 
 A validação das hipóteses envolveu o cálculo de correlações (realizado via **SQL** ou **Python**) e a análise visual dos dados em **Power BI**.
 
 ### 📌 Hipótese 1: Músicas com BPM mais altas fazem mais sucesso
 
-- **Correlação entre BPM e Streams:** -0.0028
-- **Interpretação:** Não houve correlação significativa. Hipótese não confirmada.
+- **Correlação entre BPM e Streams:** `-0.0028`
+- **Interpretação:** Não houve correlação significativa entre o número de BPMs de uma música e sua quantidade de streams. A hipótese não foi confirmada.
 
 ### 📌 Hipótese 2: As músicas populares no Spotify também se destacam em outras plataformas
 
-- **Correlação com Deezer:** 0.5851
-- **Correlação com Apple Music:** 0.7758
-- **Interpretação:** Há correlação forte, principalmente com o Apple Music. Hipótese confirmada.
+- **Correlação com Deezer:** `0.5851`
+- **Correlação com Apple Music:** `0.7758`
+- **Interpretação:** Há correlação forte, principalmente com o Apple Music, indicando que músicas bem-sucedidas no Spotify tendem a aparecer em playlists de outras plataformas. A hipótese foi confirmada.
 
 ### 📌 Hipótese 3: Músicas em mais playlists têm mais streams
 
-- **Correlação com `total_playlists`:** 0.6225
-- **Interpretação:** Forte correlação positiva. Hipótese confirmada.
+- **Correlação com `total_playlists`:** `0.6225`
+- **Interpretação:** Forte correlação positiva. Quanto mais playlists uma música está inserida, maior tende a ser o número de streams. A hipótese foi confirmada.
 
 ### 📌 Hipótese 4: Artistas com mais músicas têm mais streams
 
-- **Correlação com `total_musicas_artista`:** 0,7787
-- **Interpretação:** Correlação forte e positiva. Artistas com maior volume de lançamentos tendem a obter mais streams. Hipótese confirmada.
+- **Correlação com `total_musicas_artista`:** `0.7787`
+- **Interpretação:** Foi identificada uma correlação forte e positiva entre o número de músicas lançadas por um artista e o total de streams acumulados. Isso indica que artistas com maior volume de lançamentos tendem a obter mais streams, possivelmente devido à maior presença em plataformas e alcance de público. Essa evidência reforça que a constância e o volume de produção musical influenciam diretamente no sucesso em termos de audiência.
 
 ### 📌 Hipótese 5: Características técnicas influenciam o sucesso da música
 
 - **Correlações:**
-    - Valence: -0.0411
-    - Danceability: -0.1055
-    - Energy: -0.0256
-- **Interpretação:** Embora correlações individuais fracas, análise visual em **Power BI** sugere que maior danceability, positividade e energia tendem a ter desempenho marginalmente melhor. Relação não é estatisticamente forte ou direta. Hipótese parcialmente confirmada, indicando influência limitada.
+    - Valence: `-0.0411`
+    - Danceability: `-0.1055`
+    - Energy: `-0.0256`
+- **Interpretação:** Embora as correlações individuais sejam fracas e negativas, a análise visual dos quartis e gráficos de dispersão no **Power BI** sugere uma tendência: músicas com maior danceability, positividade (valence) e energia tendem a ter um desempenho marginalmente melhor em streams. No entanto, essa relação não se confirma como uma correlação estatisticamente forte ou direta. Isso indica que essas características influenciam o sucesso musical de forma limitada, integrando um conjunto mais amplo de fatores, como marketing, inclusão em playlists e presença multiplataforma. A hipótese foi parcialmente confirmada, demonstrando que características técnicas contribuem para o sucesso, mas são secundárias em relação a fatores de visibilidade.
 
-## Conclusão Geral
+## 💡 Conclusão Geral
 
-Dos cinco pontos analisados, três hipóteses foram confirmadas (popularidade em outras plataformas, inclusão em playlists e número de músicas por artista). Variáveis técnicas têm influência moderada. Não há relação direta entre BPM e sucesso em streams.
+Dos cinco principais pontos analisados, três hipóteses foram confirmadas. A inclusão em playlists e a popularidade em outras plataformas mostraram-se fortemente correlacionadas com o desempenho de streams das músicas. As variáveis técnicas exibiram uma influência moderada nesse desempenho, sugerindo um papel secundário. Em contrapartida, não foi observada uma relação direta entre o BPM ou o número de músicas por artista e o sucesso em streams.
 
-## Recomendações
+## 🎯 Recomendações
 
 - Investir em estratégias para inclusão em playlists populares no Spotify, Apple Music e Deezer.
-- Avaliar campanhas de marketing alinhadas a faixas com características técnicas potencialmente mais populares (alta danceability, valence e energy).
-- Explorar combinações de características técnicas com estratégias de visibilidade.
+- Avaliar campanhas de marketing alinhadas a faixas com características técnicas já validadas como potencialmente mais populares (alta danceability, valence e energy).
+- Explorar combinações de características técnicas com estratégias de visibilidade para maximizar o sucesso de lançamentos futuros.
 
 ## Arquivos e Documentos
 
-- **Dataset:** Disponível no Google BigQuery (detalhes para acesso, se possível).
-- **Power BI:** Arquivo com dashboards interativos (`visualizations/power_bi/seu_dashboard.pbix`).
+- **Dataset:** Disponível no Google BigQuery.
+- **Power BI:** Arquivo com dashboards interativos que mostram as análises, filtros por classificações e correlações 
