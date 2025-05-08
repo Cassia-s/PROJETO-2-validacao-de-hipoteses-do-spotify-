@@ -181,4 +181,4 @@ Dos cinco principais pontos analisados, três hipóteses foram confirmadas. A in
   <details>
   <summary><strong style="font-size: 16px;">Links</strong></summary>
 
-- (https://encurtador.com.br/PgEA3)
+- Apresentação
