@@ -175,7 +175,8 @@ Dos cinco principais pontos analisados, três hipóteses foram confirmadas. A in
   
   <details>
   <summary><strong style="font-size: 16px;">Dashboard</strong></summary>
-  - ![Image](https://github.com/user-attachments/assets/92b29431-3e9f-4a17-8adc-bbdfdf91954e)
+    
+  ![Image](https://github.com/user-attachments/assets/92b29431-3e9f-4a17-8adc-bbdfdf91954e)
 
   </details>
   
