@@ -8,8 +8,8 @@ Jornada na análise de dados do Spotify
 “O que faz uma música ter sucesso?’”
 
   <details>
-  <summary><strong style="font-size: 16px;">Objetivo</strong></summary>
-      
+  <summary><strong style="font-size: 16px;">Objetivo</strong></summary> 
+
 Analisar dados do Spotify para validar hipóteses levantadas por uma gravadora sobre os fatores que influenciam o sucesso de uma música, com base no número de streams, e fornecer insights estratégicos para decisões de lançamento.
 
   </details>
@@ -25,10 +25,10 @@ Analisar dados do Spotify para validar hipóteses levantadas por uma gravadora s
   <details>
   <summary><strong style="font-size: 16px;">Ferramentas e Tecnologias</strong></summary>
   
-- Google BigQuery
-- SQL
-- Power BI
-- Python
+  - Google BigQuery
+  - SQL
+  - Power BI
+  - (Python)
 
   </details>
   
