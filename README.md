@@ -181,4 +181,4 @@ Dos cinco principais pontos analisados, três hipóteses foram confirmadas. A in
   <details>
   <summary><strong style="font-size: 16px;">Links</strong></summary>
 
-- https://docs.google.com/presentation/d/1vzNds0b3ifMHkiMoM5ybMV7n6Hb_tPqs/edit?usp=sharing&ouid=117411998894801958154&rtpof=true&sd=true
+- (https://encurtador.com.br/PgEA3)
