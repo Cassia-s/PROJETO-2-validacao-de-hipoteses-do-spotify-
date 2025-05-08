@@ -176,6 +176,6 @@ Dos cinco principais pontos analisados, três hipóteses foram confirmadas. A in
   <details>
   <summary><strong style="font-size: 16px;">Links</strong></summary>
 
-- [Apresentação de vídeo (Loom)](https://www.loom.com/share/be1301605f234dfbadead77b7171c145?sid=117b4747-666f-42ec-b23b-e203afe22f96)
-- [Apresentação Google Slide](https://docs.google.com/presentation/d/1vzNds0b3ifMHkiMoM5ybMV7n6Hb_tPqs/edit?usp=sharing&ouid=117411998894801958154&rtpof=true&sd=true)
+  - [Apresentação de vídeo (Loom)](https://www.loom.com/share/be1301605f234dfbadead77b7171c145?sid=117b4747-666f-42ec-b23b-e203afe22f96)
+  - [Apresentação Google Slide](https://docs.google.com/presentation/d/1vzNds0b3ifMHkiMoM5ybMV7n6Hb_tPqs/edit?usp=sharing&ouid=117411998894801958154&rtpof=true&sd=true)
 
