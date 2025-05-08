@@ -144,7 +144,3 @@ Dos cinco pontos analisados, três hipóteses foram confirmadas (popularidade em
 
 - **Dataset:** Disponível no Google BigQuery (detalhes para acesso, se possível).
 - **Power BI:** Arquivo com dashboards interativos (`visualizations/power_bi/seu_dashboard.pbix`).
-
----
-
-Agora você pode copiar este texto e utilizá-lo para o seu arquivo `README.md` no GitHub, dentro da estrutura de pastas que definimos anteriormente. Lembre-se de adicionar seus arquivos `.sql` e `.py` nas pastas correspondentes e o arquivo `.pbix` na pasta `visualizations/power_bi/`.
