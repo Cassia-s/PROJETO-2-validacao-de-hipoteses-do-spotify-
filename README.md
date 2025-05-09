@@ -11,7 +11,7 @@ Analisar dados do Spotify para validar hipóteses levantadas por uma gravadora s
   
   <details>
   <summary><strong style="font-size: 16px;">Equipe</strong></summary>
-      
+ 
 - Cassia Silva
 - Vanessa Santana
 
