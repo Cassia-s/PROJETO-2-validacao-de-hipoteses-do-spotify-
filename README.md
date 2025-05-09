@@ -184,9 +184,7 @@ Dos cinco principais pontos analisados, três hipóteses foram confirmadas. A in
   ![Image](https://github.com/user-attachments/assets/92b29431-3e9f-4a17-8adc-bbdfdf91954e)
 
   </details>
-  
-  <details>
-  <summary><strong style="font-size: 16px;">Links</strong></summary>
+    <summary><strong style="font-size: 16px;">Links</strong></summary>
 
  [Apresentação Google Slide](https://docs.google.com/presentation/d/1vzNds0b3ifMHkiMoM5ybMV7n6Hb_tPqs/edit?usp=sharing&ouid=117411998894801958154&rtpof=true&sd=true)
 
