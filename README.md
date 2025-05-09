@@ -20,10 +20,9 @@ Analisar dados do Spotify para validar hipóteses levantadas por uma gravadora s
   <details>
   <summary><strong style="font-size: 16px;">Ferramentas e Tecnologias</strong></summary>
   
-  - Google BigQuery
-  - SQL
-  - Power BI
-  - (Python)
+ - Power BI: gráficos, médias, medianas, dispersão e dashboards interativos
+ - Python: histogramas e apoio à distribuição
+ - SQL: agregações, quartis, correlações
 
   </details>
   
@@ -51,7 +50,7 @@ Utilizamos o ambiente **Google BigQuery** para carregar as tabelas de dados.
 
 - **Projeto BigQuery:** `validacaohipotesesprojeto02`
 - **Dataset:** `spotify`
-- **Tabelas carregadas:**
+- **Tabelas importadas:**
     - `competition`
     - `technical_info`
     - `track_spotify`
@@ -60,32 +59,37 @@ Utilizamos o ambiente **Google BigQuery** para carregar as tabelas de dados.
 
 As etapas de tratamento foram realizadas utilizando **SQL** dentro do ambiente Google BigQuery.
 
-- **Dados Nulos:** Substituição de valores nulos (`IS NULL`, `COUNT`). Exemplo: `in_shazam_charts` com nulos substituídos por 0.
+- **Dados Nulos:** Substituição de valores nulos (`IS NULL`, `COUNT`, e `COALESCE`). Exemplo: `in_shazam_charts` com nulos substituídos por 0.
   - `technical_info` foi encontrado 95 resultados nulos.
   - `track_spotify` foi encontrado 50 resultados nulos.
-- **Dados Duplicados:** Foram identificados com `GROUP BY` + `HAVING COUNT(*) > 1` e tratados com média dos registros duplicados.
+- **Dados Duplicados:** Foram identificados com `GROUP BY`, `COUNT(*)` e `HAVING COUNT(*) > 1` e tratados com média dos registros duplicados.
   - Na tabela `competition`, foram encontrados 4 resultados duplicados.
-- **Exclusão de Variáveis Fora do Escopo:** Como `key` e `mode`.
+- **Exclusão de Variáveis Fora do Escopo:** Como `key` e `mode` com `SELECT EXCEPT`.
+- **Correção de valores extremos:** track_id = '0:00' removido.
 - **Padronização de Valores Textuais:** Uso de funções SQL como `REGEXP_REPLACE`, `UPPER` e `LOWER`.
 - **Correção de Erros:** Um `track_id` com valor inválido de `streams` foi corrigido com base na média da variável.
 - **Conversão de Tipos:** Uso da função SQL `SAFE_CAST` para transformar variáveis como `streams` de string para inteiro.
 
 ### 3. Criação de Novas Variáveis
 
-Novas variáveis foram criadas utilizando **SQL** no Google BigQuery.
-
-- `release_date` = `DATE(CONCAT(year, '-', month, '-', day))`
-- `total_playlists` = soma das playlists nas plataformas Spotify, Deezer e Apple Music
+- Novas variáveis foram criadas utilizando **SQL** no Google BigQuery.
+- release_date: concatenação de ano, mês e dia
+- streams_por_dia: `SAFE_DIVIDE`(streams, idade_musica_em_dias)
+- idade_musica_em_dias: `DATE_DIFF`(`CURRENT_DATE`(), `release_date`, `DAY`)
+- complexidade_acustica: média entre acousticness e instrumentalness
+- popularidade_geral: soma das presenças em todas as plataformas
+- total_playlists: número de plataformas em que a faixa aparece (`CASE WHEN` + `COALESCE`)
+- streams_categoria_quartil_label: categorizado por quartis usando `NTILE()`
 
 ### 4. Views Auxiliares
 
 Views auxiliares foram criadas para organizar o processo de ETL e consolidar a base final, utilizando **SQL** no Google BigQuery.
 
-- `competition_nova`
-- `technical_info_nova`
-- `track_spotify_nova`
-- `base_unificada` (final consolidada com `LEFT JOIN`)
-- `total_artista` (view auxiliar para contabilizar músicas por artista)
+- ´variaveis_streams_quartil´
+- `track_spotify_unificada` (final consolidada com `LEFT JOIN`)
+- Tabela final: ´variaveis_derivadas´ usando LEFT JOIN entre todas as bases.
+
+View auxiliar: total_por_artista, com COUNT(DISTINCT track_id) e SUM(streams) por artista.
 
   </details>
   
