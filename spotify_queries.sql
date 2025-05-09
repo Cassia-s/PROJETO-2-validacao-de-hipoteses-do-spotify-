@@ -1,4 +1,4 @@
--- 📌 1. Verificação e Tratamento de Nulos
+-- 📌 Verificação e Tratamento de Nulos
 SELECT * 
 FROM 
 `validacaohipotesesprojeto002.spotify.competition` 
