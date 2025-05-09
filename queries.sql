@@ -1,5 +1,5 @@
-SELECT 
-* 
+-- 📌 1. Verificação e Tratamento de Nulos
+SELECT * 
 FROM 
 `validacaohipotesesprojeto002.spotify.competition` 
 WHERE in_shazam_charts IS NULL
@@ -15,6 +15,7 @@ SELECT
 FROM 
   `validacaohipotesesprojeto002.spotify.competition`
 
+-- 📌 2. Tratamento de Colunas Técnicas
 SELECT 
   track_id,
   COALESCE(bpm, 0) AS bpm,
@@ -28,12 +29,12 @@ SELECT
 FROM 
   `validacaohipotesesprojeto002.spotify.technical_info`
 
-  SELECT 
- *
+  SELECT *
 FROM 
 `validacaohipotesesprojeto002.spotify.technical_info` 
 WHERE KEY IS NULL
 
+-- 📌 3. Identificação de Duplicidades
 SELECT
 track_name,
 artist_s__name,
@@ -43,7 +44,6 @@ FROM
 GROUP BY
 track_name, artist_s__name
 having count(*) > 1
-
 
 SELECT *
 FROM `validacaohipotesesprojeto002.spotify.track_spotify_unificada`
@@ -89,6 +89,7 @@ SELECT
 FROM 
 `validacaohipotesesprojeto002.spotify.technical_info`
 
+-- 📌 4. Padronização de Strings
 SELECT
   track_id,
   REGEXP_REPLACE(track_name, r'[^a-zA-Z0-9 ]','') AS track_name,
