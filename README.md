@@ -177,8 +177,6 @@ Dos cinco principais pontos analisados, três hipóteses foram confirmadas. A in
 - Investir em estratégias para inclusão em playlists populares no Spotify, Apple Music e Deezer.
 - Avaliar campanhas de marketing alinhadas a faixas com características técnicas já validadas como potencialmente mais populares (alta danceability, valence e energy).
 - Explorar combinações de características técnicas com estratégias de visibilidade para maximizar o sucesso de lançamentos futuros.
-
-   </details>
   
   <details>
   <summary><strong style="font-size: 16px;">Dashboard</strong></summary>
