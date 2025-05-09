@@ -72,7 +72,8 @@ As etapas de tratamento foram realizadas utilizando **SQL** dentro do ambiente G
 
 ### 3. Criação de Novas Variáveis
 
-- Novas variáveis foram criadas utilizando **SQL** no Google BigQuery.
+Novas variáveis foram criadas utilizando **SQL** no Google BigQuery.
+
 - release_date: concatenação de ano, mês e dia
 - streams_por_dia: `SAFE_DIVIDE`(streams, idade_musica_em_dias)
 - idade_musica_em_dias: `DATE_DIFF`(`CURRENT_DATE`(), `release_date`, `DAY`)
@@ -109,6 +110,8 @@ A análise exploratória foi realizada utilizando **Python** para algumas visual
 
 As variáveis numéricas foram categorizadas em quartis e classificações utilizando **SQL** no Google BigQuery, empregando funções como `PERCENTILE_CONT`, `CROSS JOIN` e `CASE WHEN`.
 
+As classificações geradas para facilitar a análise categórica foram:
+
 | Variável           | Classificação (Quartil)        |
 | :----------------- | :----------------------------- |
 | `streams_corrigido` | "Muito baixo, Baixo, Alto, Muito alto" |
@@ -132,23 +135,23 @@ A validação das hipóteses envolveu o cálculo de correlações (realizado via
 
 ### 📌 Hipótese 1: Músicas com BPM mais altas fazem mais sucesso
 
-- **Correlação entre BPM e Streams:** `-0.0028`
-- **Interpretação:** Não houve correlação significativa entre o número de BPMs de uma música e sua quantidade de streams. A hipótese não foi confirmada.
+- **Correlação entre BPM e Streams:** `-0.0028` ❌ Hipótese refutada
+- **Interpretação:** Não houve correlação significativa entre o número de BPMs de uma música e sua quantidade de streams. A hipótese não foi confirmada. Em contrapartida, o número de músicas por artista mostrou uma forte correlação com o desempenho, reforçando a relevância de manter um catálogo ativo.
 
 ### 📌 Hipótese 2: As músicas populares no Spotify também se destacam em outras plataformas
 
-- **Correlação com Deezer:** `0.8264`
-- **Correlação com Apple Music:** `0.7092`
+- **Correlação com Deezer:** `0.8264`  ✅ Confirmada
+- **Correlação com Apple Music:** `0.7092`  ✅ Confirmada
 - **Interpretação:** Há correlação forte, principalmente com o Apple Music, indicando que músicas bem-sucedidas no Spotify tendem a aparecer em playlists de outras plataformas. A hipótese foi confirmada.
 
 ### 📌 Hipótese 3: Músicas em mais playlists têm mais streams
 
-- **Correlação com `total_playlists`:** `0.7832`
+- **Correlação com `total_playlists`:** `0.7832`  ✅ Confirmada
 - **Interpretação:** Forte correlação positiva. Quanto mais playlists uma música está inserida, maior tende a ser o número de streams. A hipótese foi confirmada.
 
 ### 📌 Hipótese 4: Artistas com mais músicas têm mais streams
 
-- **Correlação com `total_musicas_artista`:** `0.7786`
+- **Correlação com `total_musicas_artista`:** `0.7786`  ✅ Confirmada
 - **Interpretação:** Foi identificada uma correlação forte e positiva entre o número de músicas lançadas por um artista e o total de streams acumulados. Isso indica que artistas com maior volume de lançamentos tendem a obter mais streams, possivelmente devido à maior presença em plataformas e alcance de público. Essa evidência reforça que a constância e o volume de produção musical influenciam diretamente no sucesso em termos de audiência.
 
 ### 📌 Hipótese 5: Características técnicas influenciam o sucesso da música
@@ -157,7 +160,7 @@ A validação das hipóteses envolveu o cálculo de correlações (realizado via
     - Valence: `-0.0496`
     - Danceability: `-0.1054`
     - Energy: `-0.0257`
-- **Interpretação:** Embora as correlações individuais sejam fracas e negativas, a análise visual dos quartis e gráficos de dispersão no **Power BI** sugere uma tendência: músicas com maior danceability, positividade (valence) e energia tendem a ter um desempenho marginalmente melhor em streams. No entanto, essa relação não se confirma como uma correlação estatisticamente forte ou direta. Isso indica que essas características influenciam o sucesso musical de forma limitada, integrando um conjunto mais amplo de fatores, como marketing, inclusão em playlists e presença multiplataforma. A hipótese foi parcialmente confirmada, demonstrando que características técnicas contribuem para o sucesso, mas são secundárias em relação a fatores de visibilidade. Assim, recomenda-se considerar características técnicas em conjunto com estratégias de visibilidade e marketing.
+- **Interpretação:** Embora as correlações individuais sejam fracas e negativas, a análise visual dos quartis e gráficos de dispersão no **Power BI** sugere uma tendência: músicas com maior danceability, positividade (valence) e energia tendem a ter um desempenho marginalmente melhor em streams. No entanto, essa relação não se confirma como uma correlação estatisticamente forte ou direta. Isso indica que essas características influenciam o sucesso musical de forma limitada, integrando um conjunto mais amplo de fatores, como marketing, inclusão em playlists e presença multiplataforma. A hipótese foi parcialmente confirmada, demonstrando que características técnicas contribuem para o sucesso, mas são secundárias em relação a fatores de visibilidade. Assim, recomenda-se considerar características técnicas em conjunto com estratégias de visibilidade e marketing. ✅ Parcialmente confirmada
 
   </details>
   
