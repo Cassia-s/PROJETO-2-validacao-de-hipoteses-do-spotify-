@@ -22,7 +22,7 @@ Analisar dados do Spotify para validar hipóteses levantadas por uma gravadora s
   
   - Power BI: gráficos, médias, medianas, dispersão e dashboards interativos
   - Python: histogramas e apoio à distribuição
-  - SQL: agregações, quartis, correlações
+  - BigQuery (SQL): agregações, quartis, correlações
 
   </details>
   
