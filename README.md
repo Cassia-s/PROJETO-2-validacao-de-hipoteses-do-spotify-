@@ -1,6 +1,6 @@
 # Projeto de Análise de Dados e validação de hipóteses Spotify
 
-## Título: “O que faz uma música ter sucesso?’”
+## Título: “O que faz uma música ter sucesso?”
 
   <details>
   <summary><strong style="font-size: 16px;">Objetivo</strong></summary> 
