@@ -191,6 +191,6 @@ Dos cinco principais pontos analisados, três hipóteses foram confirmadas. A in
   <details>
   <summary><strong style="font-size: 16px;">Links</strong></summary>
 
-[Apresentação Google Slide](https://docs.google.com/presentation/d/1vzNds0b3ifMHkiMoM5ybMV7n6Hb_tPqs/edit?usp=sharing&ouid=117411998894801958154&rtpof=true&sd=true)
+[Apresentação Google Slide](https://docs.google.com/presentation/d/1F-ViHUwXkk6aBM6fN3fq4_Xjbm6d6rbuRRnj8TogUdQ/edit?usp=sharing)
 
 </details>
